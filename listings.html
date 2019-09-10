@@ -1,0 +1,480 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Listings</title>
+    <link href = "workSite.css" rel = "stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+
+    <script type="text/javascript">
+
+      var source = 0;
+      var type = 0;
+      var tImg;
+
+      function picClick(src, th, t)
+      {
+
+        var x = window.matchMedia("(max-width: 1366px)")
+        x.addListener(next)
+
+        var y = window.matchMedia("(orientation: portrait)")
+        y.addListener(picClick)
+
+
+
+        if(x.matches)
+          {
+            document.getElementById("whiteLeft").style.width = '12%';
+            document.getElementById("whiteRight").style.marginLeft = '73%';
+            document.getElementById("whiteRight").style.width = '12%';
+          }
+
+
+        type = t;
+        source = src;
+        tImg = th;
+        console.log(tImg.naturalWidth);
+        document.getElementById("bigImage").style.visibility = "visible";
+        document.getElementById("cover").style.visibility = "visible";
+        document.getElementById("bigImage").style.zIndex = 2;
+        document.getElementById("cover").style.zIndex = 1;
+
+        document.getElementById("bigImage").src = src;
+
+
+        document.getElementById("leftButton").style.zIndex = 2;
+        document.getElementById("leftButton").style.visibility = "visible";
+        document.getElementById("rightButton").style.zIndex = 2;
+        document.getElementById("rightButton").style.visibility = "visible";
+
+        document.getElementById("exit").style.visibility = "visible";
+        document.getElementById("exit").style.zIndex = 2;
+
+
+
+        if(document.getElementById("bigImage").naturalWidth < 676)
+        {
+          document.getElementById("bigImage").style.width = '40%';
+          document.getElementById("bigImage").style.marginLeft = '29.4%';
+          document.getElementById("whiteRight").style.visibility = "visible";
+          document.getElementById("whiteRight").style.zIndex = 2;
+          document.getElementById("whiteLeft").style.visibility = "visible";
+          document.getElementById("whiteLeft").style.zIndex = 2;
+        }
+
+        if(x.matches && document.getElementById("bigImage").naturalWidth < 676)
+          {
+            document.getElementById("bigImage").style.width = '49%';
+            document.getElementById("bigImage").style.marginLeft = '25%';
+          }
+          else if(x.matches)
+          {
+            document.getElementById("bigImage").style.width = '71%';
+            document.getElementById("bigImage").style.marginLeft = '14%';
+          }
+          else if (document.getElementById("bigImage").naturalWidth < 676){
+            document.getElementById("bigImage").style.width = '40%';
+            document.getElementById("bigImage").style.marginLeft = '29.4%';
+          }
+          else{
+            document.getElementById("bigImage").style.width = '65%';
+            document.getElementById("bigImage").style.marginLeft = '17%';
+          }
+
+          if(y.matches)
+            {
+              document.getElementById("bigImage").style.top = '16%';
+              document.getElementById("bigImage").style.marginLeft = '0%';
+              document.getElementById("bigImage").style.width = '100%';
+              document.getElementById("bigImage").style.height = '71.5%';
+
+              document.getElementById("rightButton").innerHTML = "Next";
+              document.getElementById("leftButton").innerHTML = "Prev";
+
+              document.getElementById("rightButton").style.width = '100%';
+              document.getElementById("rightButton").style.height = '12.5%';
+              document.getElementById("rightButton").style.left = '0%';
+              document.getElementById("leftButton").style.top = '87.5%';
+              document.getElementById("leftButton").style.left = '0%';
+              document.getElementById("leftButton").style.width = '100%';
+              document.getElementById("leftButton").style.height = '12.5%';
+
+              document.getElementById("exit").style.width = '100%';
+              document.getElementById("exit").style.marginLeft = '0%';
+
+              document.getElementById("whiteRight").style.visibility = "hidden";
+              document.getElementById("whiteRight").style.zIndex = -2;
+              document.getElementById("whiteLeft").style.visibility = "hidden";
+              document.getElementById("whiteLeft").style.zIndex = -2;
+
+            }
+
+      }
+
+      function next(){
+
+        var x = window.matchMedia("(max-width: 1366px)")
+        x.addListener(next)
+
+        var y = window.matchMedia("(orientation: portrait)")
+        y.addListener(picClick)
+
+        if(x.matches)
+          {
+            document.getElementById("whiteLeft").style.width = '12%';
+            document.getElementById("whiteRight").style.marginLeft = '73%';
+            document.getElementById("whiteRight").style.width = '12%';
+          }
+
+        document.getElementById("bigImage").style.marginLeft = '17%';
+        document.getElementById("whiteRight").style.visibility = "hidden";
+        document.getElementById("whiteRight").style.zIndex = -1;
+        document.getElementById("whiteLeft").style.visibility = "hidden";
+        document.getElementById("whiteLeft").style.zIndex = -1;
+
+        var index = parseInt(source.charAt(source.length - 5));
+
+        if(index > 9)
+        {
+          var temp = parseInt(source.charAt(source.length - 5)) + 10;
+        }
+
+        index++;
+
+        source = source.slice(0,source.length-5);
+
+        if(index > type)
+        {
+          index = 1;
+        }
+
+        document.getElementById("bigImage").src = source += index += ".jpg";
+
+
+        if(document.getElementById("bigImage").naturalWidth < 676)
+        {
+            document.getElementById("bigImage").style.width = '40%';
+            document.getElementById("bigImage").style.marginLeft = '29.4%';
+            document.getElementById("whiteRight").style.visibility = "visible";
+            document.getElementById("whiteRight").style.zIndex = 2;
+            document.getElementById("whiteLeft").style.visibility = "visible";
+            document.getElementById("whiteLeft").style.zIndex = 2;
+        }
+
+        if(x.matches && document.getElementById("bigImage").naturalWidth < 676)
+          {
+            document.getElementById("bigImage").style.width = '49%';
+            document.getElementById("bigImage").style.marginLeft = '25%';
+          }
+          else if(x.matches)
+          {
+            document.getElementById("bigImage").style.width = '71%';
+            document.getElementById("bigImage").style.marginLeft = '14%';
+          }
+          else if (document.getElementById("bigImage").naturalWidth < 676){
+            document.getElementById("bigImage").style.width = '40%';
+            document.getElementById("bigImage").style.marginLeft = '29.4%';
+          }
+          else{
+            document.getElementById("bigImage").style.width = '65%';
+            document.getElementById("bigImage").style.marginLeft = '17%';
+          }
+
+
+          if(y.matches)
+            {
+              document.getElementById("bigImage").style.top = '16%';
+              document.getElementById("bigImage").style.marginLeft = '0%';
+              document.getElementById("bigImage").style.width = '100%';
+              document.getElementById("bigImage").style.height = '71.5%';
+
+              document.getElementById("rightButton").innerHTML = "Next";
+              document.getElementById("leftButton").innerHTML = "Prev";
+
+              document.getElementById("rightButton").style.width = '100%';
+              document.getElementById("rightButton").style.height = '12.5%';
+              document.getElementById("rightButton").style.left = '0%';
+              document.getElementById("leftButton").style.top = '87.5%';
+              document.getElementById("leftButton").style.left = '0%';
+              document.getElementById("leftButton").style.width = '100%';
+              document.getElementById("leftButton").style.height = '12.5%';
+
+              document.getElementById("exit").style.width = '100%';
+              document.getElementById("exit").style.marginLeft = '0%';
+
+              document.getElementById("whiteRight").style.visibility = "hidden";
+              document.getElementById("whiteRight").style.zIndex = -2;
+              document.getElementById("whiteLeft").style.visibility = "hidden";
+              document.getElementById("whiteLeft").style.zIndex = -2;
+            }
+      }
+
+
+      function prev(){
+
+        var x = window.matchMedia("(max-width: 1366px)")
+        x.addListener(next)
+
+        var y = window.matchMedia("(orientation: portrait)")
+        y.addListener(picClick)
+
+        document.getElementById("bigImage").style.marginLeft = '17%';
+        document.getElementById("whiteRight").style.visibility = "hidden";
+        document.getElementById("whiteRight").style.zIndex = -1;
+        document.getElementById("whiteLeft").style.visibility = "hidden";
+        document.getElementById("whiteLeft").style.zIndex = -1;
+
+        var index = parseInt(source.charAt(source.length - 5));
+
+        if(index > 9)
+        {
+          var temp = parseInt(source.charAt(source.length - 5)) + 10;
+        }
+
+        index--;
+
+        source = source.slice(0,source.length-5);
+
+        if(index < 1)
+        {
+          index = type;
+        }
+
+        document.getElementById("bigImage").src = source += index += ".jpg";
+
+        if(document.getElementById("bigImage").naturalWidth < 676)
+        {
+            document.getElementById("bigImage").style.width = '40%';
+            document.getElementById("bigImage").style.marginLeft = '29.4%';
+            document.getElementById("whiteRight").style.visibility = "visible";
+            document.getElementById("whiteRight").style.zIndex = 2;
+            document.getElementById("whiteLeft").style.visibility = "visible";
+            document.getElementById("whiteLeft").style.zIndex = 2;
+        }
+
+        if(x.matches && document.getElementById("bigImage").naturalWidth < 676)
+          {
+            document.getElementById("bigImage").style.width = '49%';
+            document.getElementById("bigImage").style.marginLeft = '25%';
+          }
+          else if(x.matches)
+          {
+            document.getElementById("bigImage").style.width = '71%';
+            document.getElementById("bigImage").style.marginLeft = '14%';
+          }
+          else if (document.getElementById("bigImage").naturalWidth < 676){
+            document.getElementById("bigImage").style.width = '40%';
+            document.getElementById("bigImage").style.marginLeft = '29.4%';
+          }
+          else{
+            document.getElementById("bigImage").style.width = '65%';
+            document.getElementById("bigImage").style.marginLeft = '17%';
+          }
+
+
+          if(y.matches)
+            {
+              document.getElementById("bigImage").style.top = '16%';
+              document.getElementById("bigImage").style.marginLeft = '0%';
+              document.getElementById("bigImage").style.width = '100%';
+              document.getElementById("bigImage").style.height = '71.5%';
+
+              document.getElementById("rightButton").innerHTML = "Next";
+              document.getElementById("leftButton").innerHTML = "Prev";
+
+              document.getElementById("rightButton").style.width = '100%';
+              document.getElementById("rightButton").style.height = '12.5%';
+              document.getElementById("rightButton").style.left = '0%';
+              document.getElementById("leftButton").style.top = '87.5%';
+              document.getElementById("leftButton").style.left = '0%';
+              document.getElementById("leftButton").style.width = '100%';
+              document.getElementById("leftButton").style.height = '12.5%';
+
+              document.getElementById("exit").style.width = '100%';
+              document.getElementById("exit").style.marginLeft = '0%';
+
+              document.getElementById("whiteRight").style.visibility = "hidden";
+              document.getElementById("whiteRight").style.zIndex = -2;
+              document.getElementById("whiteLeft").style.visibility = "hidden";
+              document.getElementById("whiteLeft").style.zIndex = -2;
+            }
+      }
+
+
+      function offClick()
+      {
+        document.getElementById("bigImage").style.visibility = "hidden";
+        document.getElementById("cover").style.visibility = "hidden";
+        document.getElementById("bigImage").style.zIndex = -2;
+        document.getElementById("cover").style.zIndex = -2;
+        document.getElementById("leftButton").style.zIndex = -2;
+        document.getElementById("leftButton").style.visibility = "hidden";
+        document.getElementById("rightButton").style.zIndex = -2;
+        document.getElementById("rightButton").style.visibility = "hidden";
+        document.getElementById("exit").style.visibility = "hidden";
+        document.getElementById("exit").style.zIndex = -2;
+        document.getElementById("bigImage").style.width = '65%';
+        document.getElementById("bigImage").style.marginLeft = '17%';
+        document.getElementById("whiteRight").style.visibility = "hidden";
+        document.getElementById("whiteRight").style.zIndex = -1;
+        document.getElementById("whiteLeft").style.visibility = "hidden";
+        document.getElementById("whiteLeft").style.zIndex = -1;
+
+      }
+
+
+    </script>
+
+  </head>
+  <body>
+    <div id = "mainTtl">
+    <h1><span>Kenyon & Sons</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metal<br><br>&nbsp;<span id = "processing">Processing Inc</span></h1>
+      <img src = "logo2.png" id = "logo" alt = "logo" />
+    </div>
+
+    <div id = "ul">
+      <a href = "index.html"><div class = "li">Home</div></a>
+      <a href = "eBay.html"><div class = "li">eBay</div></a>
+      <a href = "listings.html"><div class = "li">Items For Sale</div></a>
+      <a href = "services.html"><div class = "li">Services</div></a>
+    </div>
+
+    <div id = "disclaimer">These advertisements are vague descriptions of the actual products for sale. If there is any desire to learn more about or purchase a product please call or email Dan Kenyon.<br>
+      Phone Number: <a href = "tel:216-224-7173">216-224-7173</a> Email: <a href = "mailto:danken126@yahoo.com">danken126@yahoo.com</a></div>
+
+    <div id = "instruction">Click On one of the images to view more photos of the product!</div>
+
+    <table id = "listings">
+      <tr>
+        <th>Drexel Swing Mast forklift SLT-22, 1951 Hours</th>
+        <th>Yale ERP040 4000# Electric Forklift</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/drexel/drexel1.jpg" alt = "drexel forklift" onclick = "picClick(this.src, this, 6)">
+            <p>Price: $3990<br>Details: Great Running Condition<br>36v, 2200# Capacity<br>190" Raised Height, 83" Lowered<br>3 Stage Mast And Good Tires</p></td>
+        <td><img src = "resources/yale/yale1.jpg" onclick = "picClick(this.src, this, 3)">
+            <p>Price: $2500<br>Details: Older Unit<br>Runs Well<br>Good Battery<br>3 Wheel Pneumatic Forklift</p></td>
+      </tr>
+
+
+      <tr>
+        <th>Welding Tank Cart</th>
+        <th>Yale MPB-040 Electric pallet jack (With New Motor)</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/weld/weld1.jpg" onclick = "picClick(this.src, this, 2)">
+        </img><p><br>Price: $50<br>Details: In Very Good Condition</p></td>
+        <td><img src = "resources/pallet/pallet1.jpg" onclick = "picClick(this.src, this, 6)">
+        </img><p>Price: $990<br>Details: Condition Is Newer<br>Good Battery Pack<br>Built In Charger<br>New Motor</p></td>
+      </tr>
+
+      <tr>
+        <th>Freightliner FLD 112 64 ST Semi Tractor For Parts</th>
+        <th>Vaughan V4K Stainless Chopper Pump 7.5HP</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/semi/semi1.jpg" onclick = "picClick(this.src, this, 9)">
+        </img><p>Price: CALL FOR PRICING<br>Details: Freightliner FLD11264ST<br>Cat C-12 With Many Good Parts<br>Many Good Misc Parts<br>Good Diffs, Good Aluminum Cab And Newer Hood</p></td>
+        <td><img src = "resources/vaughan/vaughan1.jpg" onclick = "picClick(this.src, this, 7)">
+        </img><p>Price: $3000<br>Details: Used For 6 Months<br>TECO Westinghouse 7.5HP Motor<br>16' Head, 340 GPM<br>8.6" Impeller</p></td>
+      </tr>
+
+      <tr>
+        <th>Jun-Air compressor Model 2000-40PD2</th>
+        <th>Big Joe Stacker 194" reach, 3 Stage 50" Spread Between Outriggers</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/jun/jun1.jpg" onclick = "picClick(this.src, this, 9)">
+        </img><p>Price: $990<br>Details: 240V Compressor<br>Slight Damage From Surviving A Fire<br>Burn On Lid<br>Crack In Plastic Shroud For Motor Fan</p></td>
+        <td><img src = "resources/joe/joe1.jpg" onclick = "picClick(this.src, this, 6)">
+        </img><p>Price: $1500<br>Details: Model PDH-30-194<br>Over 60" Free Lift<br>24V Industrial Battery<br> 50" Spread Between Outriggers</p></td>
+      </tr>
+
+      <tr>
+        <th>Alcoa Aluminum 11R 22.5 Truck Steer Wheels</th>
+        <th>Steel 4' Bar Stock (Up To 3") For CNC</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/wheels/wheels1.jpg" onclick = "picClick(this.src, this, 4)">
+        </img><p><br>Price: $120<br>Details: Model 11R 22.5<br>Dirty But In Overall Good Shape</p></td>
+        <td><img src = "resources/bars/bars1.jpg" onclick = "picClick(this.src, this, 1)">
+        </img><p>Price: $20 Each<br>Details: Steel And 316 Stainless Steel<br>4' Rolled Steel Round And Hexagonal<br> For CNC Machining About 2000#<br>3'x3' 1/8" Brass Sheet Available As Well</p></td>
+      </tr>
+
+      <tr>
+        <th>Butcher Block Work Benches 5' & 6' Available</th>
+        <th>Commercial Shelving Units</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/benches/benches1.jpg" onclick = "picClick(this.src, this, 8)">
+        </img><p>Price: $200-300<br>Details: Several Available Between $200 And $300<br>5' And 6'Long<br>Comes With Different Configurations<br>Some Have Drawers, Organizers And Shelves</p></td>
+        <td><img src = "resources/shelves/shelves1.jpg" onclick = "picClick(this.src, this, 3)">
+        </img><p><br>Price: $30-$50<br>Details: Singles Are $30 Each<br>Doubles Are $50 Each</p></td>
+      </tr>
+
+      <tr>
+        <th>Misc. Power tools: Makita 14.4 & 18V, Milwaukee 18V, De Walt, Bosch..</th>
+        <th>Shop Carts, Tables, Rolling Bins, Job Boxes, Tool Chest</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/tools/tools1.jpg" onclick = "picClick(this.src, this, 2)">
+        </img><p><br>Price: $20 Each<br>Details: Tools Include Drills, Saws,<br>Staplers, And Rotary Hammers</p></td>
+        <td><img src = "resources/bins/bins1.jpg" onclick = "picClick(this.src, this, 7)">
+        </img><p>Price: $50-$200<br>Details: Misc Storage Items Include<br>Job Boxes, A New Waterloo Tool Chest,<br>Tables, And Bins</p></td>
+      </tr>
+
+      <tr>
+        <th>Vintage Warehouse Cart</th>
+        <th>HID Light Bulbs, Metal Halide, High Pressure Sodium, Mercury Vapor</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/cart/cart1.jpg" onclick = "picClick(this.src, this, 4)">
+        </img><p>Price: $100<br>Details: Very Heavy Duty Cart<br>At Least 1000# Capacity<br>12" Wheels<br>Wooden Deck<br>Removable Handle</p></td>
+        <td><img src = "resources/bulbs/bulbs1.jpg" onclick = "picClick(this.src, this, 6)">
+        </img><p><br>Price: $5 Each Or Better Prices Per Box/Case<br>Details: 100, 150, 175, And 250W Bulbs<br>Metal Halide, HPS, And Mercury Vapor</p></td>
+      </tr>
+
+      <tr>
+        <th>Industrial MECO-Omaha Reel Rack RR328, Up To 31" Reel Width</th>
+        <th>Skate Wheel Conveyor Sections 10' Sections</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/reel/reel1.jpg" onclick = "picClick(this.src, this, 8)">
+        </img><p>Price: $150<br>Details: Racks For Dispensing Cables, Chains,<br>Wire, Or Anything On A Reel Or Roll<br>They Are 96" x 24" x 42"<br>Can hold A Reel Up To 32"<br>And 2000# Per Level x 4 Levels</p></td>
+        <td><img src = "resources/skate/skate1.jpg" onclick = "picClick(this.src, this, 5)">
+        </img><p><br>Price: $20 Each<br>Details: Mallard Mfg.<br>Single Row Skate Wheel Conveyor</p></td>
+      </tr>
+
+      <tr>
+        <th>Stainless Bar Sink 12" x 18" x 9" Deep, With High Rise Central Faucet</th>
+        <th>Sealed Air Bubble Mask 24" x 300' Adhesive Coated Rolls</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/sink/sink1.jpg" onclick = "picClick(this.src, this, 3)">
+        </img><p><br>Price: $40<br>Details: Bar Style Sink<br>From Grocery Store Kitchen<br></p></td>
+        <td><img src = "resources/bubble/bubble1.jpg" onclick = "picClick(this.src, this, 3)">
+        </img><p>Price: $100<br>Details: Adhesive Backed Bubble Wrap<br>24" Wide x 300' Long<br>Perforated Every 6"<br>Discounts For Quantity</p></td>
+      </tr>
+
+      <tr>
+        <th>1 1/2" Sch 40 PVC Conduit With Bells For Connecting</th>
+      </tr>
+      <tr>
+        <td><img src = "resources/conduit/conduit1.jpg" onclick = "picClick(this.src, this, 4)">
+        </img><p><br>Price: $5 Each<br>Details: PVC sch 40 1 1/2" Conduit<br>Also Have 1/2" Steel Conduit</p></td>
+
+      </tr>
+
+    </table>
+
+    <div id = "exit" onclick = "offClick()">Exit Photo Viewer</div>
+    <button type = "button" class = "buttons" id = "leftButton" onclick = "prev()"><</button>
+     <div id = whiteLeft></div>
+        <img id = "bigImage"></img>
+     <div id = whiteRight></div>
+    <button type = "button" class = "buttons" id = "rightButton" onclick = "next()">></button>
+        <div id = "cover" onclick = "offClick()"></div>
+
+  </body>
+
+</html>
