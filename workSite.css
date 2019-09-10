@@ -442,3 +442,7 @@ span#processing{
 p#eBaytxt{
   text-align: center;
 }
+
+p#adBlockWarning{
+  text-align: center;
+}
